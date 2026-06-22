@@ -2,7 +2,7 @@
 import classes from "./Home.module.css";
 import { Link } from "react-router-dom";
 // useEffect副作用を扱うフック 主にAPI通信、タイマー、イベント登録など
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Home = () => {
   // const [値, 更新関数] = useState(初期値);空の配列を入れる、API取得後posts = data.postsになる
@@ -32,6 +32,7 @@ export const Home = () => {
   }, []);
   // loading trueの場合実行される
   if (loading) return <div className={classes.postLoading}>読み込み中...</div>;
+  if (posts.length === 0) return <p>データが存在しません</p>;
 
   // 全体の流れ  Home表示→useEffect実行→fetcher実行→loading=true→API通信→JSON変換 postsに保存→loading=false→再レンダリング→記事一覧表示
 
