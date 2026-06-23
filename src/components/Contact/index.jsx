@@ -92,7 +92,7 @@ export const Contact = () => {
                 required: "メールアドレスは必須です。",
                 pattern: {
                   value:
-                //   入力された文字がメールアドレスの形式かチェック
+                    //   入力された文字がメールアドレスの形式かチェック
                     /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/,
                   message: "正しいメールアドレスを入力してください。",
                 },
@@ -112,6 +112,8 @@ export const Contact = () => {
               name="message"
               type="text"
               className={classes.textarea}
+              //   送信中に入力をできないようにする
+              disabled={isSubmitting}
               {...register("message", {
                 required: "本文は必須です。",
                 maxLength: {
